@@ -32,10 +32,14 @@ const Contact = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const serviceId = "service_skckdsq";
-    const templateId = "template_ktjtn5o";
-    const publicKey = "i0avD-goh2-aNfQ2u";
-  
+    // const serviceId = "service_skckdsq";
+    // const templateId = "template_ktjtn5o";
+    // const publicKey = "i0avD-goh2-aNfQ2u";
+
+    const serviceId = import.meta.env.VITE_SERVICE_ID_KEY;
+    const templateId = import.meta.env.VITE_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
@@ -44,10 +48,10 @@ const Contact = () => {
       service: formData.service,
       from_phone: formData.phone,
     };
-  
+
     emailjs
-    .send(serviceId, templateId, templateParams, publicKey)
-    .then((response) => {
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
         // Optional: clear form or show success message
         setFormData({
@@ -57,14 +61,12 @@ const Contact = () => {
           service: "",
           message: "",
         });
-        
       })
       .catch((error) => {
         console.log("FAILED...", error);
       });
-    
   };
-  
+
   return (
     <Layout>
       {/* SEO */}
@@ -93,7 +95,6 @@ const Contact = () => {
               <Card className="bg-white">
                 <CardContent className="p-6">
                   <form
-                    
                     // action="https://formspree.io/f/your_form_id"
                     // method="POST"
                     className="space-y-6"
@@ -232,25 +233,22 @@ const Contact = () => {
             </div>
 
             {/* Google Map Embed */}
-            {/* <div className="h-full">
+            <div className="md:h-[580px]">
               <h2 className="font-playfair text-3xl font-bold text-tailor-dark mb-6">
                 Visit Us
               </h2>
-              <Card className="bg-white h-full">
+              <Card className="bg-pink-900 h-full fade-in rounded-xl overflow-hidden">
                 <CardContent className="p-0 h-full">
                   <iframe
                     title="Vasugi Tailor Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.382594403191!2d80.2089855!3d12.8181366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525ec725e3a8b1%3A0x56e83cfeb09b5d54!2sVasugi%20Tailor!5e0!3m2!1sen!2sin!4v1712301334107!5m2!1sen!2sin"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d972.1266330885894!2d80.15200906955485!3d12.939406499210818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525ef83f64bd37%3A0x23a5b0973850c3a0!2s11-33%2C%207th%20St%2C%20Vinobaji%20Nagar%2C%20Hasthinapuram%2C%20Chromepet%2C%20Chennai%2C%20Tamil%20Nadu%20600064!5e0!3m2!1sen!2sin!4v1741761008757!5m2!1sen!2sin"
+                    className="w-full h-full border-0"
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
                 </CardContent>
               </Card>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

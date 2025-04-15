@@ -26,7 +26,7 @@ const servicesList = [
       "Custom design and styling options",
       "Delivery within agreed timeframe",
     ],
-    price: "Starting from ₹3000",
+    price: "Starting from ₹500",
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ const servicesList = [
       "Taking in or letting out seams",
       "Quick turnaround options available",
     ],
-    price: "Starting from ₹500",
+    price: "Starting from ₹300",
   },
   {
     id: 3,
@@ -56,7 +56,7 @@ const servicesList = [
       "Family wedding ensembles",
       "Pre-wedding consultation and multiple fittings",
     ],
-    price: "Starting from ₹10,000",
+    price: "Starting from ₹2,000",
   },
   {
     id: 4,
@@ -86,7 +86,7 @@ const servicesList = [
       "Lining replacement",
       "Patch work and reinforcement",
     ],
-    price: "Starting from ₹300",
+    price: "Starting from ₹500",
   },
 ];
 

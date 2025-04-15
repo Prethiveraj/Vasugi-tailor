@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -95,9 +94,24 @@ const Testimonials = () => {
           
           {/* Testimonials */}
           <div className="overflow-hidden">
-            <div className="flex transition-all duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+            <div 
+              className="flex" 
+              style={{ 
+                transform: `translateX(-${currentIndex * 100}%)`,
+                transition: "transform 0.7s cubic-bezier(0.45, 0, 0.55, 1)",
+                willChange: "transform"
+              }}
+            >
               {testimonials.map((testimonial, idx) => (
-                <Card key={idx} className="w-full flex-none border-none shadow-lg bg-white rounded-xl overflow-hidden animate-fade-in" style={{ animationDelay: "300ms" }}>
+                <Card 
+                  key={idx} 
+                  className="w-full flex-none border-none shadow-lg bg-white rounded-xl overflow-hidden"
+                  style={{ 
+                    opacity: currentIndex === idx ? 1 : 0.7,
+                    transition: "opacity 0.5s ease, transform 0.5s ease",
+                    transform: `scale(${currentIndex === idx ? 1 : 0.95})` 
+                  }}
+                >
                   <CardContent className="p-0">
                     <div className="p-8 md:p-12 text-center">
                       <div className="w-20 h-20 mx-auto mb-6 overflow-hidden rounded-full border-4 border-tailor-cream transform transition-transform duration-300 hover:scale-110">

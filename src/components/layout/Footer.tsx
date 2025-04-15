@@ -1,6 +1,7 @@
 
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa"
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,22 +13,28 @@ const Footer = () => {
           {/* About Section */}
           <div>
             <h3 className="font-playfair text-2xl font-bold mb-4 text-tailor-gold">Vasugi Tailor</h3>
-            <p className="font-poppins text-gray-300 mb-4">
-              Providing premium tailoring services with attention to detail and commitment to quality since 1985.
-            </p>
+            <p className="font-poppins text-gray-300 mb-4 flex items-center gap-2 sm:text-left">
+             Wear what you love
+             <br className="block sm:hidden" />
+             <img
+             src="./src/assest/icons/scissors-6-50.png" alt="Woman Blouse" width={20} height={24}/>
+             Find it here.
+             </p>
+
+
             <div className="flex space-x-4">
               <a href="https://facebook.com" aria-label="Facebook" className="text-gray-300 hover:text-tailor-gold transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://instagram.com" aria-label="Instagram" className="text-gray-300 hover:text-tailor-gold transition-colors">
+              <a href="https://www.instagram.com/vasugi_trailor?igsh=cGp1eTlzNGt6cTl2" aria-label="Instagram" className="text-gray-300 hover:text-tailor-gold transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="https://twitter.com" aria-label="Twitter" className="text-gray-300 hover:text-tailor-gold transition-colors">
-                <Twitter size={20} />
+              <a href="https://wa.me/+918825831383" aria-label="Whatsapp" className="text-gray-300 hover:text-tailor-gold transition-colors">
+                <FaWhatsapp size={20} />
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h3 className="font-playfair text-xl font-bold mb-4 text-tailor-gold">Quick Links</h3>
