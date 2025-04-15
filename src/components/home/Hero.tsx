@@ -8,11 +8,11 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   
   const carouselImages = [
-  "./src/assest/images/img 1.jpeg",
-  "./src/assest/images/img 2.jpeg",
-  "./src/assest/images/img 3.jpeg",
-  "./src/assest/images/img 4.jpeg",
-  "./src/assest/images/img 5.jpeg",
+  "../src/assest/images/img 1.jpeg",
+  "../src/assest/images/img 2.jpeg",
+  "../src/assest/images/img 3.jpeg",
+  "../src/assest/images/img 4.jpeg",
+  "../src/assest/images/img 5.jpeg",
   ]
   
   const nextSlide = () => {
