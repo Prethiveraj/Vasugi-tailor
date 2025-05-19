@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
@@ -10,22 +9,23 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   
+  
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
+  
   const handleBookClick = () => {
     navigate('/contact');
   }
   
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 w-full">
+    <header className={`bg-white border-b border-gray-200 fixed shadow-md left-0 top-0 z-50 w-full transform transition-transform duration-300 delay-100`}>
       <div className="container mx-auto px-2 sm:px-4 py-2">
         <div className="flex items-center justify-between h-16">
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 z-50 sticky">
             <Link
               to="/"
               className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"

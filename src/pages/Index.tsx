@@ -9,7 +9,7 @@ import ContactCTA from "@/components/home/ContactCTA";
 const Index = () => {
   return (
     <Layout>
-      <div className="w-full overflow-x-hidden">
+      <div className="w-full overflow-hidden">
         <Hero />
         <div className="reveal-on-scroll w-full" style={{ animationDelay: '0.2s' }}>
           <FeaturedServices />
