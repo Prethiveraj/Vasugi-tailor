@@ -1,6 +1,4 @@
-
 import { ReactNode, useEffect } from "react";
-
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -9,7 +7,6 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  // Add scroll reveal effect when page loads
   useEffect(() => {
     const handleScroll = () => {
       const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -25,7 +22,6 @@ const Layout = ({ children }: LayoutProps) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Trigger once on load
     handleScroll();
     
     return () => {
@@ -34,9 +30,9 @@ const Layout = ({ children }: LayoutProps) => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen w-full">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="flex-1 pt-16">{children}</main>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

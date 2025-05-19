@@ -14,7 +14,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
-      const halfScreen = window.innerHeight * 0.5;    // 50% of viewport
+      const halfScreen = window.innerHeight * 0.5;
    
       const isScrollingUp = prevScrollPos > currentScrollPos;
       console.log("currentscroll:",currentScrollPos,"Prevscroll:", prevScrollPos)
@@ -23,9 +23,7 @@ const Header = () => {
       setPrevScrollPos(currentScrollPos);
     };
     
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-    
     return () => window.removeEventListener('scroll', handleScroll);
   }, [prevScrollPos]);
   
@@ -38,13 +36,18 @@ const Header = () => {
   }
   
   return (
-    <header className={`bg-white border-b border-gray-200 fixed shadow-md left-0 top-0 z-50 w-full transform transition-transform duration-300 delay-100 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
-      <div className="container mx-auto px-2 sm:px-4 py-2">
-        <div className="flex items-center justify-between h-16">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-md transition-transform duration-300 ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      }`}
+      style={{ height: '64px' }}
+    >
+      <div className="container mx-auto h-full px-4">
+        <div className="flex items-center justify-between h-full">
           <Logo />
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8 z-50 sticky">
+          <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
               className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
@@ -78,16 +81,18 @@ const Header = () => {
           </nav>
 
           {/* Contact Button */}
-          
           <div className="hidden md:flex">
-            <Button onClick={handleBookClick} className="bg-tailor-maroon hover:bg-tailor-dark text-white">
+            <Button 
+              onClick={handleBookClick} 
+              className="bg-tailor-maroon hover:bg-tailor-dark text-white transition-colors"
+            >
               <Phone size={18} className="mr-2" />
               Book Appointment
             </Button>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden">
             <button
               onClick={toggleMenu}
               className="text-tailor-dark p-2 focus:outline-none"
@@ -97,56 +102,64 @@ const Header = () => {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-100 py-4 animate-fade-in w-full">
-          <div className="container mx-auto px-2 sm:px-4">
-            <div className="flex flex-col space-y-4">
-              <Link
-                to="/"
-                className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Home
-              </Link>
-              <Link
-                to="/services"
-                className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link
-                to="/about"
-                className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                to="/gallery"
-                className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-              <Link
-                to="/contact"
-                className="font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <Button onClick={handleBookClick} className="bg-tailor-maroon hover:bg-tailor-dark text-white w-full">
-                <Phone size={18} className="mr-2" />
-                Book Appointment
-              </Button>
-            </div>
+        {/* Mobile Navigation */}
+        <div 
+          className={`absolute left-0 right-0 bg-white border-b border-gray-200 md:hidden transition-all duration-300 ease-in-out ${
+            isMenuOpen 
+              ? 'max-h-96 opacity-100 visible' 
+              : 'max-h-0 opacity-0 invisible'
+          }`}
+        >
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            <Link
+              to="/"
+              className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Home
+            </Link>
+            <Link
+              to="/services"
+              className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              to="/about"
+              className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              to="/gallery"
+              className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Gallery
+            </Link>
+            <Link
+              to="/contact"
+              className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contact
+            </Link>
+            <Button 
+              onClick={() => {
+                handleBookClick();
+                setIsMenuOpen(false);
+              }} 
+              className="w-full bg-tailor-maroon hover:bg-tailor-dark text-white"
+            >
+              <Phone size={18} className="mr-2" />
+              Book Appointment
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 };
