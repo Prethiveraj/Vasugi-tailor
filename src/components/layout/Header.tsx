@@ -38,9 +38,10 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200 shadow-md transition-transform duration-300 ${
         visible ? 'translate-y-0' : '-translate-y-full'
       }`}
+      style={{ height: '64px' }}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto h-full px-4">
+        <div className="flex items-center justify-between h-full">
           <Logo />
 
           {/* Desktop Navigation */}
@@ -102,13 +103,13 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         <div 
-          className={`md:hidden transition-all duration-300 ease-in-out ${
+          className={`absolute left-0 right-0 bg-white border-b border-gray-200 md:hidden transition-all duration-300 ease-in-out ${
             isMenuOpen 
               ? 'max-h-96 opacity-100 visible' 
               : 'max-h-0 opacity-0 invisible'
           }`}
         >
-          <div className="py-4 space-y-4">
+          <div className="container mx-auto px-4 py-4 space-y-4">
             <Link
               to="/"
               className="block font-poppins font-medium text-tailor-dark hover:text-tailor-maroon transition-colors"
