@@ -17,6 +17,8 @@ const Header = () => {
       const halfScreen = window.innerHeight * 0.5;    // 50% of viewport
    
       const isScrollingUp = prevScrollPos > currentScrollPos;
+      console.log("currentscroll:",currentScrollPos,"Prevscroll:", prevScrollPos)
+      console.log(window.innerHeight)
       setVisible(isScrollingUp || currentScrollPos < halfScreen);
       setPrevScrollPos(currentScrollPos);
     };
