@@ -33,7 +33,7 @@ const Hero = () => {
   const nextIndex = (currentSlide + 1) % carouselImages.length;
 
   return (
-    <div className="bg-[#EC7FA9] text-white w-full z-0 py-8 flex items-center overflow-hidden relative">
+    <div className="bg-[#EC7FA9] text-white w-full z-0 py-8 flex items-center overflow-hidden relative pt-16">
       <div className="flex flex-col relative container mx-auto px-4 py-20 md:py-12 md:flex-row w-full items-center">
         
         {/* Carousel Section */}
