@@ -7,8 +7,25 @@ import Logo from "./logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
   const navigate = useNavigate();
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const halfScreen = window.innerHeight * 0.5;    // 50% of viewport
+   
+      const isScrollingUp = prevScrollPos > currentScrollPos;
+      setVisible(isScrollingUp || currentScrollPos < halfScreen);
+      setPrevScrollPos(currentScrollPos);
+    };
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
   
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,7 +36,7 @@ const Header = () => {
   }
   
   return (
-    <header className={`bg-white border-b border-gray-200 fixed shadow-md left-0 top-0 z-50 w-full transform transition-transform duration-300 delay-100`}>
+    <header className={`bg-white border-b border-gray-200 fixed shadow-md left-0 top-0 z-50 w-full transform transition-transform duration-300 delay-100 ${visible ? 'translate-y-0' : '-translate-y-full'}`}>
       <div className="container mx-auto px-2 sm:px-4 py-2">
         <div className="flex items-center justify-between h-16">
           <Logo />
